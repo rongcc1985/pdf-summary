@@ -2,7 +2,8 @@ import streamlit as st
 from pypdf import PdfReader
 import requests
 
-API_KEY = "sk-c2230dc13ee2444fa8ad51be40f87b82"
+import os
+API_KEY = os.getenv("API_KEY")
 API_URL = "https://api.deepseek.com/v1/chat/completions"
 
 st.title("PDF 200字总结工具")
@@ -40,3 +41,4 @@ if uploaded_file:
         summary = result["choices"][0]["message"]["content"]
         st.subheader("摘要结果：")
         st.write(summary)
+
